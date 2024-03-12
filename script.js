@@ -15,7 +15,7 @@ function updateView() {
         </div>
         <div id="timeResults"></div>
     `;
-    if(selectedLampIndex !== -1) {
+    if(selectedLampIndex !== 0) {
         turnLightOn(selectedLampIndex);     
     }
 }
@@ -32,7 +32,7 @@ function randomLightOn() {
 }
 
 function turnLightOn(i) {
-    if(selectedLampIndex !== -1) {
+    if(selectedLampIndex !== 0) {
         document.getElementById(`lamp${selectedLampIndex}`).classList.remove('lightOn');
     }
     document.getElementById(`lamp${i}`).classList.add('lightOn');
@@ -40,11 +40,11 @@ function turnLightOn(i) {
 }
 
 function selectedLamp(i) {
-    if (i === selectedLampIndex) { // Only proceed if the clicked lamp is the currently highlighted one
+    if (i === selectedLampIndex) { 
         let finishTime = new Date().getTime();
         let spentMilliseconds = finishTime - startTime;
         let spentSeconds = spentMilliseconds / 1000;
         document.getElementById('timeResults').innerHTML += `Reaction Time: ${spentSeconds} seconds.<br>`;
-        randomLightOn(); // Highlight another lamp
+        randomLightOn(); 
     }
 }
